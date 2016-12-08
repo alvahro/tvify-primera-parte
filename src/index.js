@@ -1,6 +1,6 @@
 /**
  * Module Dependencies
- * 
+ * TEST
  */
 
 import $ from 'jquery'
