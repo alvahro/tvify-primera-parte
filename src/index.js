@@ -2,41 +2,31 @@
  * Module Dependencies
  */
 
-var http = require('http')
 var fs = require('fs')
+var http = require('http')
+/*
+ * JavaScript por defecto no soporta modularizacion, por esto NodeJS usa una libreria
+ * llamada CommonJS que incorpora la funcion require() y el objeto module con su atributo export (module.export)
+ */
+var assets = require('./assets.js')
 
 console.log('Servidor web NodeJS para tvify')
-
-/*
- * Es asincronica porque es una funcion asincronica porque en su implementacion
- * llaama a otra funcion asincronica. Por lo tanto, uno de sus parametros tiene 
- * que ser un "callback"
- * Por convencion, el callback es el utltimo parametro
- */
-function serveStatic(name, callback) {
-  fs.readFile('./public/' + name, function (err, data) {
-    if (err) {
-      return callback(err)
-    }
-    callback(err, data.toString())
-  })
-}
 
 var server = http.createServer(function (request, response) {
   console.log('Recibi un request para ' + request.url)
   switch (request.url) {
     case '/':
-      serveStatic('index.html', function (err, content) {
+      assets.serveStatic('index.html', function (err, content) {
 	response.end(content)
       })
       break;
     case '/app.js':
-      serveStatic('app.js', function (err, content) {
+      assets.serveStatic('app.js', function (err, content) {
 	response.end(content)
       })
       break
     case '/app.css':
-      serveStatic('app.css', function (err, content) {
+      assets.serveStatic('app.css', function (err, content) {
 	response.end(content)
       })      
       break
