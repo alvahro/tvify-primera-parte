@@ -24,7 +24,7 @@ function serveStatic(name, callback) {
 
 var server = http.createServer(function (request, response) {
   console.log('Recibi un request para ' + request.uri)
-  switch (request.url) {
+  switch (request.uri) {
     case '/':
       serveStatic('index.html', function (err, content) {
 	response.end(content)
