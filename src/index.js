@@ -30,12 +30,12 @@ var server = http.createServer(function (request, response) {
 	response.end(content)
       })
       break;
-    case 'app.js':
+    case '/app.js':
       serveStatic('app.js', function (err, content) {
 	response.end(content)
       })
       break
-    case 'app.css':
+    case '/app.css':
       serveStatic('app.css', function (err, content) {
 	response.end(content)
       })      
