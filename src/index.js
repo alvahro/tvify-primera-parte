@@ -2,7 +2,6 @@
  * Module Dependencies
  */
 
-var fs = require('fs')
 var http = require('http')
 /*
  * JavaScript por defecto no soporta modularizacion, por esto NodeJS usa una libreria

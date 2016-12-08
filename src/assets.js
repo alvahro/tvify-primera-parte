@@ -2,6 +2,8 @@
  * Modularizacion. Recursos de mi proyecto.
  */
 
+var fs = require('fs')
+
 /*
  * Es asincronica porque es una funcion asincronica porque en su implementacion
  * llaama a otra funcion asincronica. Por lo tanto, uno de sus parametros tiene 
