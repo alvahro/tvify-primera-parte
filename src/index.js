@@ -31,12 +31,12 @@ var server = http.createServer(function (request, response) {
       })
       break;
     case 'app.js':
-      serveStatic('apps.js', function (err, content) {
+      serveStatic('app.js', function (err, content) {
 	response.end(content)
       })
       break
     case 'app.css':
-      serveStatic('apps.css', function (err, content) {
+      serveStatic('app.css', function (err, content) {
 	response.end(content)
       })      
       break
