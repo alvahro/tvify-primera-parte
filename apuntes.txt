@@ -3,3 +3,5 @@ por el motor V8 que este utiliza (https://nodejs.org/en/docs/es6/).
 No está soportado la modularización a través de la notacion "import" y "from" que propone ES6, para esto
 se tiene que usar la libreria Babel.
 ES6 también introduce el concepto de calses.
+
+Endpoints: metodo (verbo) + URL
