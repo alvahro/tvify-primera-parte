@@ -37,7 +37,7 @@ app.post('/vote/:id', (req, res) => {
     votes[id] = votes[id] + 1    
   }  
   
-  res.json({ votes: "pepe", id: id })
+  res.json({ "votes": votes[id], "id": id })
 })
 
 /*
