@@ -31,12 +31,34 @@ app.listen(3002, function () {
 
 Babel y Browserify
 
-Del lado del Frontend:
+    Del lado del Frontend:
 
-En un primer momento Babel se utiliza como un transform para Browserify en la parte de Frontend,
-lo que se hace el anter de que Browserify haga lo suyo el código se transforma utilizando Babel de
-ES6 a ES5.
+        En un primer momento Babel se utiliza como un transform para Browserify en la parte de Frontend,
+        lo que se hace el anter de que Browserify haga lo suyo el código se transforma utilizando Babel de
+        ES6 a ES5.
 
-Del lado del Backend:
+    Del lado del Backend:
 
-nececitamos otro modulo de Babel llamado babel-cli (command line interface)
+        Nececitamos otro modulo de Babel llamado babel-cli (command line interface)
+
+        babel-preset-es2015 esta como dev dependecy, esto quiere decir que se instala solo en el ambiente de desarrollo
+        y en dependecies se ponen los modulos que van a ir en el ambiente de produccion.
+        En el caso de esta dependencia queremos que este en dependencies porque siempre lo vamos a nececitar, pueseto que 
+        ahora Babel va a ser nuestro runtime en lugar de node, en realidad el Runtime de Babel funciona sobre node pero lo que
+        hace primero es transformar el codigo de ES6 a ES5 y luego se lo pasa al Runtime de NodeJS.
+
+        Si lo instalamos local podemos correr para correr el repl (runtime) de babel:
+            $ babl-node
+        Si lo instalamos solo local hacemos:
+            $ node_modules/babel-cli/bin/babel-node.js
+        Si queremos correr nuestro nodo con el server web:
+            $ node_modules/babel-cli/bin/babel-node.js sr/server
+
+        Cuando Babel paso de la versión 5 a la 6 cambiaron algunas cosas y debo pasar el presert para ES5 si quiero usar toda la sitanxys de ES6
+
+            $ node_modules/babel-cli/bin/babel-node.js sr/server --presets es2015
+                
+            Windows:
+            
+            $ node node_modules/babel-cli/bin/babel-node.js sr/server --presets es2015
+
