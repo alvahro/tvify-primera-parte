@@ -36,6 +36,8 @@ app.post('/vote/:id', (req, res) => {
   } else {
     votes[id] = votes[id] + 1    
   }  
+  
+  res.josn({ votes: votes[id] })
 })
 
 /*
