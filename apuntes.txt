@@ -5,3 +5,38 @@ se tiene que usar la libreria Babel.
 ES6 también introduce el concepto de calses.
 
 Endpoints: metodo (verbo) + URL
+
+Procesos y threads:
+
+Cada vez que ejecuto node un proceso se crea para albergar esta intancia, puedo tener
+varios. También un mismo proceso puede albergar 2 servidores web en 2 puertos distintos, o dos procesos
+distintos de node pueden albergar un servidor (o mas tamién) siempre en puertos distintos:
+
+node src/server/index.js
+
+app.listen(3000, function () {
+  console.log('Servidor iniciado con Express en el puerto 3000')
+})
+
+app.listen(3001, function () {
+   console.log('Servidor iniciado con Express en el puerto 3001')
+})
+    
+
+node src/server/index2.js
+
+app.listen(3002, function () {
+  console.log('Servidor iniciado con Express en el puerto 3001')
+})
+
+Babel y Browserify
+
+Del lado del Frontend:
+
+En un primer momento Babel se utiliza como un transform para Browserify en la parte de Frontend,
+lo que se hace el anter de que Browserify haga lo suyo el código se transforma utilizando Babel de
+ES6 a ES5.
+
+Del lado del Backend:
+
+nececitamos otro modulo de Babel llamado babel-cli (command line interface)
