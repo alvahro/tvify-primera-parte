@@ -31,7 +31,7 @@ app.post('/vote/:id', (req, res) => {
    * que especifique arriba.
    */
   let id = req.param.id
-  if (votes[id] === undefine) {
+  if (votes[id] === undefined) {
     votes[id] = 1
   } else {
     votes[id] = votes[id] + 1    
