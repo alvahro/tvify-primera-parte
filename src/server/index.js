@@ -1,7 +1,7 @@
 import express from 'express'
 const app = express()
 
-let votes = {}
+const votes = {}
 
 /*
  * app.use() registra middleware que se ejecutan de fomra secuencial cada vez que ingresa un request
@@ -30,7 +30,7 @@ app.post('/vote/:id', (req, res) => {
    * si encuentra un ":" si lo que viene es un numero lo va a tomar como un parametro y toma el nombre
    * que especifique arriba.
    */
-  let id = req.param.id
+  let id = req.params.id
   if (votes[id] === undefined) {
     votes[id] = 1
   } else {
