@@ -62,3 +62,16 @@ Babel y Browserify
             
             $ node node_modules/babel-cli/bin/babel-node.js sr/server --presets es2015
 
+Middlewares:
+
+    Son modulos que estan en el medio, en el medio del request que recibe express y la funcion en la que termino devolviendo info de vuelta al cliente.
+    Es una forma de reutilizar funciones o rutinas de código entre distintos endpoints.
+
+    Con app.use() implemento middlewares. como primer parametro es la url que quiero matchear en el request y como segundo
+    una funcion que recibe 3 parametros el request el response y "next" que a su vez es otro midleware, el siguiente. 
+    El orden es importante, los middleware se van ejecutando en el orden que en el que están en el código.
+
+    Són utiles para procesar los request de forma global y reutilizar esos preprocesamientos en varios lugar o que se ejecten para un grupo o todos
+    los request. Estos se pueden encadenar secuencialemnte, para esto es el parámetro (que es una funcion) next (next())
+    
+

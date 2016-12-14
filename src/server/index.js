@@ -9,7 +9,21 @@ const votes = {}
  */
 app.use(express.static('public'))
 
+app.use('/api/votes', (req,res, next) => {
+  console.log('Middleware 1')
+  next()
+})
+
+app.use('/api/votes', (req,res, next) => {
+  console.log('Middleware 2')
+  console.log('GET /votes')
+  res.json(votes)
+  // se puede devolver en lugar de next() una rta por ejemplo para manejar errores
+})
+
 /*
+ * API RESTful
+ * 
  * Endpoints: metodo (verbo) + URL
  * Funciones arrow
  * Express devuelve un 404 por default si no encuenta un recurso
