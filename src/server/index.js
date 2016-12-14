@@ -1,7 +1,7 @@
 import express from 'express'
 const app = express()
 
-const votes = {}
+let votes = {}
 
 /*
  * app.use() registra middleware que se ejecutan de fomra secuencial cada vez que ingresa un request
@@ -37,7 +37,7 @@ app.post('/vote/:id', (req, res) => {
     votes[id] = votes[id] + 1    
   }  
   
-  res.json({ "votes": votes[id], "id": id })
+  res.json({ votes: votes[id] })
 })
 
 /*
