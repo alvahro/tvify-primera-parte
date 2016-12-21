@@ -53,6 +53,8 @@ Babel y Browserify
             $ node_modules/babel-cli/bin/babel-node.js
         Si queremos correr nuestro nodo con el server web:
             $ node_modules/babel-cli/bin/babel-node.js sr/server
+            En package.json:
+            "serve": "NODE_PATH=. babel-node.js src/server --presets es2015"
 
         Cuando Babel paso de la versión 5 a la 6 cambiaron algunas cosas y debo pasar el presert para ES5 si quiero usar toda la sitanxys de ES6
 
