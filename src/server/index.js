@@ -8,7 +8,7 @@ const votes = {}
  * app.use() registra middleware que se ejecutan de fomra secuencial cada vez que ingresa un request
  * express.static() es un middleware que sirve archivos estaticos
  */
-//app.use(express.static('public'))
+app.use(express.static('public'))
 //
 //app.use('/api/votes', (req,res, next) => {
 //  console.log('Middleware 1')
