@@ -27,7 +27,7 @@ app.use('/api/votes', (req,res, next) => {
   next()
 })
 
-app.use('/api/votes', (req,res, next) => {
+app.use('/api/vote', (req,res, next) => {
   console.log('Middleware 2')
   console.log('GET /votes')
   next()
