@@ -4,7 +4,7 @@ import api from 'src/server/api'
 
 import mongoose from 'mongoose'
 
-mongoose.connect('mongodb://localhost/tvify')
+mongoose.connect('mongodb://tvify:tvifyusrmdb@localhost/tvify')
 
 /*
  * app.use() registra middleware que se ejecutan de fomra secuencial cada vez que ingresa un request
