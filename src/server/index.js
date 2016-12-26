@@ -12,6 +12,7 @@ app.use(express.static('public'))
 
 /*
  * Middlewares
+ * 
  * Para procesar cookies debo usar un middleware. Express no ofrece un mecanismo
  * para obtenerlos parseados mediantes el mismo, para eso hay que usar algún módulo como:
  * https://www.npmjs.com/package/cookie-parser se usa como un middleware de Express.
