@@ -9,18 +9,28 @@ const votes = {}
  * express.static() es un middleware que sirve archivos estaticos
  */
 app.use(express.static('public'))
-//
-//app.use('/api/votes', (req,res, next) => {
-//  console.log('Middleware 1')
-//  next()
-//})
-//
-//app.use('/api/votes', (req,res, next) => {
-//  console.log('Middleware 2')
-//  console.log('GET /votes')
-//  res.json(votes)
-//  // se puede devolver en lugar de next() una rta por ejemplo para manejar errores
-//})
+
+/*
+ * Middlewares
+ * Para procesar cookies debo usar un middleware. Express no ofrece un mecanismo
+ * para obtenerlos parseados mediantes el mismo, para eso hay que usar algún módulo como:
+ * https://www.npmjs.com/package/cookie-parser se usa como un middleware de Express.
+ * Lo mismo se da con los formularios, debo utilizar otro middleware (también viene un módulo npm)
+ * https://www.npmjs.com/package/body-parser
+ * Eriquesen el objeto request con propiedades.
+ */
+app.use('/api/votes', (req,res, next) => {
+  console.log('Middleware 1')
+  next()
+})
+
+app.use('/api/votes', (req,res, next) => {
+  console.log('Middleware 2')
+  console.log('GET /votes')
+  next()
+  // res.json(votes)
+  // se puede devolver en lugar de next() una rta por ejemplo para manejar errores
+})
 
 app.use('/api', api)
 

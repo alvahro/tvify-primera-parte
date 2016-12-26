@@ -76,4 +76,21 @@ Middlewares:
     Són utiles para procesar los request de forma global y reutilizar esos preprocesamientos en varios lugar o que se ejecten para un grupo o todos
     los request. Estos se pueden encadenar secuencialemnte, para esto es el parámetro (que es una funcion) next (next())
     
+MongoDB:
 
+    Base daos NoSQL o "documental".
+    Tabla = colección
+    Registro = documento => muy parecido a lo que son objetos de javascript
+    Aplicación gráfica: robomongo
+
+            
+    Los tipos que maneja JS y los que maneja MongoDB son exactamente los mismo, por lo que 
+    no hay un mapeo de tipos.
+
+    Mongoose:
+
+        ODM: Object Document Mapper
+
+        Por código fuerza un esquema. Hay una validación de la estructura de datos.
+        Defino la estructura de datos no en la BD si no en el código fuente de mi app.
+        

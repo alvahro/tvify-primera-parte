@@ -3,6 +3,8 @@
  */
 
 import express from 'express'
+import Vote from 'src/models'
+
 const router = express.Router()
 
 /*
@@ -13,7 +15,8 @@ const router = express.Router()
  * Express devuelve un 404 por default si no encuenta un recurso
  */
 
-var votes = {}
+// var votes = {}
+
 
 // GET /api/votes
 router.get('/votes', (req, res) => {
@@ -22,7 +25,10 @@ router.get('/votes', (req, res) => {
    * HTTP Status code: si no especifico express pone el 200 (Ok)
    */
   console.log('GET /votes')
-  res.json(votes)
+  // funcion asincronica.
+  Vote.find({}, (err, docs) => {
+    res.json(docs)
+  }) // Es un método de mongoose no de mongodb si bien muchos son parecidos
 })
 
 // POST /api/vote/<id>
