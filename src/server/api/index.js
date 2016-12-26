@@ -42,6 +42,9 @@ router.post('/vote/:id', (req, res) => {
    * si encuentra un ":" si lo que viene es un numero lo va a tomar como un parametro y toma el nombre
    * que se especificó arriba.
    */
+  
+  console.log('GET /votes')
+  
   let id = req.params.id
   if (votes[id] === undefined) {
     votes[id] = 1
