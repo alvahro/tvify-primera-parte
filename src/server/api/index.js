@@ -27,6 +27,9 @@ router.get('/votes', (req, res) => {
   console.log('GET /votes')
   // funcion asincronica.
   Vote.find({}, (err, docs) => {
+    if (err) {
+      return res.sendStatus(500).json(err)
+    }
     res.json(docs)
   }) // Es un método de mongoose no de mongodb si bien muchos son parecidos
 })
