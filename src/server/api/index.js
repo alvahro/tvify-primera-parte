@@ -28,6 +28,7 @@ router.get('/votes', (req, res) => {
   // funcion asincronica.
   Vote.find({}, (err, docs) => {
     if (err) {
+      console.log(err)
       return res.sendStatus(500).json(err)
     }
     res.json(docs)
