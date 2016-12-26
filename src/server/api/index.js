@@ -3,7 +3,7 @@
  */
 
 import express from 'express'
-import Vote from 'src/models'
+import Vote from 'src/models/models'
 
 const router = express.Router()
 
