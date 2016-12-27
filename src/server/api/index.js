@@ -45,14 +45,37 @@ router.post('/vote/:id', (req, res) => {
   
   console.log('GET /vote/:id')
   
-  let id = req.params.id
-  if (votes[id] === undefined) {
-    votes[id] = 1
-  } else {
-    votes[id] = votes[id] + 1    
-  }  
+  /*
+   * Funcion anonima que devuelve otra funcion anonima.
+   * save() recibe un funcion callback. Se puede pasar como una variable que contenga 
+   * una fucnion: save(onSave) o como el valor que retorna una función que a su vez es una funcion:
+   * save(onSave()). Lo que logro con lo segundo en este caso, es tener en el contexto de la funcion
+   * callback a la varianle "vote" que nececito y que la paso como parámetro.
+   */  
+  var onSave = vote => {
+    return err => {
+      if (err) {
+	return res.sendStatus(500).json(err)
+      }
+      res.json(vote)
+    }
+  } 
   
-  res.json({ votes: votes[id] })
+  let id = req.params.id
+
+  let vote = new Vote()
+  
+  Vote.findOne({ showId: id }, (err, doc) => {
+    if (doc) {
+      doc.count = doc.count + 1
+      doc.save(onSave(doc))
+    } else {
+      let vote = new Vote()
+      vote.showId = id
+      vote.count = 1
+      vote.save(onSave(vote))
+    }
+  })
 })
 
 export default router
