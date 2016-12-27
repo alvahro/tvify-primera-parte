@@ -29,7 +29,7 @@ app.use('/api/votes', (req,res, next) => {
 
 app.use('/api/vote', (req,res, next) => {
   console.log('Middleware 2')
-  console.log('GET /votes')
+  console.log('POST /vote/<id>')
   next()
   // res.json(votes)
   // se puede devolver en lugar de next() una rta por ejemplo para manejar errores
