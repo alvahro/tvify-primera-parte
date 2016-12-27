@@ -43,7 +43,7 @@ router.post('/vote/:id', (req, res) => {
    * que se especificó arriba.
    */
   
-  console.log('GET /votes')
+  console.log('GET /vote/:id')
   
   let id = req.params.id
   if (votes[id] === undefined) {
