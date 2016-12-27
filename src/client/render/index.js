@@ -12,7 +12,7 @@ var template = `<article data-id=:id: class="tv-show">
           <div class="right info">
             <h1>:name:</h1>
             <p>:summary:</p>
-            <button class="like">💖</button
+            <button class="like">💖</button>
 	    <span class="count">:count:</span>
           </div>
         </article>`
@@ -26,7 +26,7 @@ export default function renderShows(shows = []) {
       .replace(':summary:', show.summary)
       .replace(':img alt:', show.name + " Logo")
       .replace(':id:', show.id)
-      .replace(':count:', show.count)
+      .replace(':count:', show)
       
     var $article = $(article)
     $tvShowsContainer.append($article.fadeIn(1500));
