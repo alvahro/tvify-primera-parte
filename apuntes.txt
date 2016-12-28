@@ -17,6 +17,8 @@ http://expressjs.com/en/advanced/best-practice-security.html
 
 http://mongoosejs.com/docs/promises.html
 
+SocketIO Guillermo Rauch
+
 Endpoints: metodo (verbo) + URL
 
 Procesos y threads:
