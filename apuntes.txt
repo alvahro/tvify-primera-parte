@@ -10,6 +10,13 @@ https://github.com/sindresorhus/awesome-nodejs
 Best practices:
 https://bufferwall.com/blogs/2015-02-22-best-practices-for-node-js-and-io-js/
 
+Express
+http://expressjs.com/en/guide
+
+http://expressjs.com/en/advanced/best-practice-security.html
+
+http://mongoosejs.com/docs/promises.html
+
 Endpoints: metodo (verbo) + URL
 
 Procesos y threads:
