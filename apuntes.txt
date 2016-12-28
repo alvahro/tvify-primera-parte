@@ -4,6 +4,8 @@ No está soportado la modularización a través de la notacion "import" y "from"
 se tiene que usar la libreria Babel.
 ES6 también introduce el concepto de calses.
 
+https://github.com/sindresorhus/awesome-nodejs
+
 Endpoints: metodo (verbo) + URL
 
 Procesos y threads:
