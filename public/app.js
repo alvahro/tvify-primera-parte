@@ -11622,15 +11622,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _page2.default)('/', function (ctx, next) {
   _tvShowsContainer2.default.find('.tv-show').remove();
-  if (!localStorage.shows) {
-    (0, _tvmazeApiClient.getShows)(function (shows) {
-      _tvShowsContainer2.default.find('.loader').remove();
-      localStorage.shows = JSON.stringify(shows);
-      (0, _render2.default)(shows);
-    });
-  } else {
-    (0, _render2.default)(JSON.parse(localStorage.shows));
-  }
+  (0, _tvmazeApiClient.getShows)(function (shows) {
+    _tvShowsContainer2.default.find('.loader').remove();
+    localStorage.shows = JSON.stringify(shows);
+    (0, _render2.default)(shows);
+  });
 }); /**
      * Module Dependencies
      */
@@ -11680,14 +11676,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Module Dependencies
  */
 
-var template = '<article class="tv-show">\n          <div class="left img-container">\n            <img src=":img:" alt=":img alt:">\n          </div>\n          <div class="right info">\n            <h1>:name:</h1>\n            <p>:summary:</p>\n            <button data-id=:id: class="like">\uD83D\uDC96</button\n          </div>\n        </article>';
+var template = '<article data-id=:id: class="tv-show">\n          <div class="left img-container">\n            <img src=":img:" alt=":img alt:">\n          </div>\n          <div class="right info">\n            <h1>:name:</h1>\n            <p>:summary:</p>\n            <button class="like">\uD83D\uDC96</button>\n\t    <span class="count">:count:</span>\n          </div>\n        </article>';
 
 function renderShows() {
   var shows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
   _tvShowsContainer2.default.find('.loader').remove();
   shows.forEach(function (show) {
-    var article = template.replace(':name:', show.name).replace(':img:', show.image ? show.image.medium : '').replace(':summary:', show.summary).replace(':img alt:', show.name + " Logo").replace(':id:', show.id);
+    var article = template.replace(':name:', show.name).replace(':img:', show.image ? show.image.medium : '').replace(':summary:', show.summary).replace(':img alt:', show.name + " Logo").replace(':id:', show.id).replace(':count:', show.count);
 
     var $article = (0, _jquery2.default)(article);
     _tvShowsContainer2.default.append($article.fadeIn(1500));
@@ -11738,9 +11734,15 @@ var $tvShowsContainer = (0, _jquery2.default)('#app-body').find('.tv-shows'); /*
 
 $tvShowsContainer.on('click', 'button.like', function (ev) {
   var $this = (0, _jquery2.default)(this);
-  var id = $this.data('id');
+  var $article = $this.closest('.tv-show');
+  var id = $article.data('id');
   _jquery2.default.post('/api/vote/' + id, function () {
-    $this.closest('.tv-show').toggleClass('liked');
+    var counter = $this.closest('article').find('.count');
+    var content = counter.html();
+    var count = Number(content);
+    count = count + 1;
+    counter.html(count);
+    $article.toggleClass('liked');
   });
 });
 
@@ -11764,7 +11766,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function getShows(fn) {
   _jquery2.default.ajax('http://api.tvmaze.com/shows', {
     success: function success(shows, textStatus, xhr) {
-      fn(shows);
+      _jquery2.default.get('/api/votes', function (votes) {
+        shows.map(function (show) {
+          var vote = votes.filter(function (vote) {
+            return vote.showId === show.id;
+          })[0];
+          show.count = vote ? vote.count : 0;
+          return show;
+        });
+        fn(shows);
+      });
     }
   });
 } /**
