@@ -4,7 +4,11 @@ No está soportado la modularización a través de la notacion "import" y "from"
 se tiene que usar la libreria Babel.
 ES6 también introduce el concepto de calses.
 
+Recopilacion de documentacion de NodeJS:
 https://github.com/sindresorhus/awesome-nodejs
+
+Best practices:
+https://bufferwall.com/blogs/2015-02-22-best-practices-for-node-js-and-io-js/
 
 Endpoints: metodo (verbo) + URL
 
